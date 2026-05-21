@@ -9,11 +9,8 @@
     {
       "name": "adaptative-spec",
       "description": "Calibrate intent, interface, behavior, and verification specs for autonomous AI handoff",
-      "version": "3.0.0",
-      "source": {
-        "source": "git",
-        "url": "https://github.com/lucasven/adaptative-spec.git"
-      }
+      "source": "./plugins/adaptative-spec",
+      "category": "development"
     }
   ]
 }

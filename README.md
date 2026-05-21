@@ -114,9 +114,9 @@ Once installed, skills are invoked as `/adaptative-spec:spec-handoff`, `/adaptat
 
 The defaults reflect general patterns. Adjustable per project:
 
-- **Scoring formula** in `skills/spec-handoff/references/scoring.md`
-- **Quality bars** in each pillar's `skills/<pillar>/references/quality-bar.md`
-- **File extensions** in `skills/spec-handoff/references/handoff-folder.md`
+- **Scoring formula** in `plugins/adaptative-spec/skills/spec-handoff/references/scoring.md`
+- **Quality bars** in each pillar's `plugins/adaptative-spec/skills/<pillar>/references/quality-bar.md`
+- **File extensions** in `plugins/adaptative-spec/skills/spec-handoff/references/handoff-folder.md`
 - **Method choices** at rung 3 Behavior (examples vs decision table vs scenarios)
 
 ## Tested examples
