@@ -1,3 +1,32 @@
+# Motivations [This section was NOT AI generated]
+
+Goal: __*Generate the most assertive code while reviewing the least ammount of code/text possible upfront*__
+
+I decided to create *(yet another)* spec skill to overcome a pain I have been feeling lately when using AI coding tools to development purposes.
+
+## Problem it tries to resolve
+
+My main issue is that, oftentimes we do research and create plans, where we have to analyze a lot of code that will be written when our actual main goal is to have a feature developed. That feature (in our heads) is not code, it is also not specific data, it is a behavior we are trying to codify. And for that specific purpose, analysing code in a plan is overkill, since we're mostly trying to get work done, and it's not time to review specific code yet.
+
+## Other Solutions and their problems
+
+Specification techniques for coding exist for ages, and they are great. So, why not just use it? we already have many spec techniques and many AI skills to help us define and review them.
+
+My pain point with all other skills I tested was: it either tried to be specify too much (a common AI problem) or too little, and it generated too much text to review (or gaps), and my main pain with that is that if I need to review all this written text I should probably just create a plan with code and analyze the plan and code instead of reading and reviewing all these descriptions.
+
+## My solution
+
+After some back and forth with AI, with a simple goal in mind 
+__"Generate the most assertive code while reviewing the least ammount of code/text possible"__
+I decided that the best spec approach in the AI era would actually be to adjust specification levels to the task we're trying to complete.
+
+With that AI suggested to have 4 specification levels across 4 pillars. 
+
+Too simple? light spec.
+Too complex? heavy spec.
+Need to do a second pass to confirm behavior intent works as expected? just point your AI to the verification-spec folder of the spec you created with a clean context and let it burn to verify it actually satisfies what you needed.
+
+---
 # Spec Handoff Skill Bundle (v3)
 
 Five skills that help shape a task into a spec the user can hand to AI for autonomous, verifiable work. The skill *discusses the feature and explores the codebase first*, then proposes a calibration based on what it learned, then produces a folder of real files. The user never has to score their own task in framework vocabulary.
