@@ -89,25 +89,34 @@ Discovery is the most important phase and the one that's most invisible — the 
 
 ## Installation
 
-This is a Claude Code plugin. Install it from the repo:
+This is a Claude Code skill plugin.
+
+**Clone and use locally:**
 
 ```bash
-# Test locally during development
+git clone https://github.com/lucasven/adaptative-spec.git
 claude --plugin-dir /path/to/adaptative-spec
-
-# Or install via marketplace once published
-claude plugin install adaptative-spec@marketplace-name
 ```
 
-Skills are invoked as `/adaptative-spec:spec-handoff`, `/adaptative-spec:behavior-spec`, etc.
+**Via marketplace (for persistent installation):**
+
+```bash
+# Inside Claude Code, add this repo as a marketplace
+/plugin marketplace add lucasven/adaptative-spec
+
+# Then install the plugin
+/plugin install adaptative-spec
+```
+
+Once installed, skills are invoked as `/adaptative-spec:spec-handoff`, `/adaptative-spec:behavior-spec`, etc. Run `/reload-plugins` after installation to apply changes.
 
 ## Customization
 
 The defaults reflect general patterns. Adjustable per project:
 
-- **Scoring formula** in `spec-handoff/references/scoring.md`
-- **Quality bars** in each pillar's `references/quality-bar.md`
-- **File extensions** in `spec-handoff/references/handoff-folder.md`
+- **Scoring formula** in `skills/spec-handoff/references/scoring.md`
+- **Quality bars** in each pillar's `skills/<pillar>/references/quality-bar.md`
+- **File extensions** in `skills/spec-handoff/references/handoff-folder.md`
 - **Method choices** at rung 3 Behavior (examples vs decision table vs scenarios)
 
 ## Tested examples

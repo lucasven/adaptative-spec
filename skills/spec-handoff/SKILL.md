@@ -1,9 +1,17 @@
 ---
 name: spec-handoff
-description: Help shape a task into a spec the user can hand to AI for autonomous, verifiable work. Use this whenever planning a feature, refactor, migration, or any coding task where the user wants help structuring the spec before delegating to Claude Code, an agent, or another developer. Trigger on phrases like "spec out this task", "what spec do I need", "prepare this for AI", "is this ready to hand off", or whenever the user is at the boundary between planning and implementation. Also trigger when the user mentions calibration, granularity, ATDD, specification, or pillar-based specs (intent, interface, behavior, verification). The skill discusses the feature with the user and explores the codebase to understand it, then proposes a calibration the user can confirm or adjust, then produces a folder of artifacts. It does not interrogate the user with framework questions up front.
+description: Use when planning a feature, refactor, migration, or any coding task that needs structured specs before delegating to an agent or developer. Trigger on "spec out this task", "what spec do I need", "prepare this for AI", "is this ready to hand off", or when the user mentions calibration, granularity, ATDD, or pillar-based specs (intent, interface, behavior, verification).
 ---
 
 # Spec Handoff
+
+## When to Use
+
+- User has a task and wants help structuring its spec before delegating
+- User is at the boundary between planning and implementation
+- User mentions calibration, granularity, ATDD, or pillar-based specs
+
+**Not this skill:** If the rung is already settled for a specific pillar, use the pillar skill directly (`intent-spec`, `interface-spec`, `behavior-spec`, `verification-spec`).
 
 ## Purpose
 

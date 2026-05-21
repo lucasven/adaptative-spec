@@ -1,0 +1,15 @@
+{
+  "name": "adaptative-spec",
+  "description": "Adaptive specification skills for autonomous AI handoff",
+  "plugins": [
+    {
+      "name": "adaptative-spec",
+      "description": "Calibrate intent, interface, behavior, and verification specs for autonomous AI handoff",
+      "version": "3.0.0",
+      "source": {
+        "source": "github",
+        "repo": "lucasven/adaptative-spec"
+      }
+    }
+  ]
+}

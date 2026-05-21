@@ -1,168 +1,56 @@
 ---
 name: intent-spec
-description: Produce an Intent specification artifact at a chosen rung (1-4) — a one-line goal, a user story with acceptance criteria, a working-backwards README, or a full example map. Use this whenever the user needs to pin down what success looks like for a task. Trigger on phrases like "what does done mean", "spec out the intent", "write the user story", "draft the README", "what's the goal", or when the parent skill spec-handoff dispatches Intent artifact production. The skill writes its output as files in an `intent/` subfolder and annotates a quality bar checklist alongside — it does not gate or block.
+description: Use when the user needs to pin down what success looks like for a task — phrases like "what does done mean", "spec out the intent", "write the user story", "draft the README", "what's the goal", or when spec-handoff dispatches Intent artifact production at a settled rung.
 ---
 
 # Intent Spec
+
+## When to Use
+
+- User asks what "done" means or needs goals defined
+- spec-handoff dispatched Intent production at a settled rung
+- Need to pin down success criteria before implementation
+
+**Not this skill:** If the rung isn't settled yet, use `spec-handoff` — it handles discovery and calibration first.
 
 ## Inputs
 
 - **Rung** (1–4)
 - **Task description** (free text from the user)
-- **Output path** (the `intent/` subfolder under the spec root; default `specs/<task-slug>/intent/`)
-- **Inherited references** (optional — existing stories, READMEs, OKRs the artifact should align with)
+- **Output path** (`intent/` subfolder; default `specs/<task-slug>/intent/`)
+- **Inherited references** (optional — existing stories, READMEs, OKRs to align with)
 
-## Files this skill produces
+## Quick Reference
 
-Per chosen rung, write the following files into the output path:
+| Rung | Files | Method |
+|---|---|---|
+| 1 | `README.md` | One declarative sentence: "When *trigger*, the *component* *does action* so that *outcome*." |
+| 2 | `README.md` + `story.md` | User story + acceptance criteria + non-goals (INVEST) |
+| 3 | `README.md` | Working-backwards README as if the feature shipped (~30-60 lines) |
+| 4 | `README.md` + `example-map.md` | Working-backwards README + rules/examples/open questions |
 
-| Rung | Files |
-|---|---|
-| 1 | `README.md` (the one-sentence goal in a tiny doc) |
-| 2 | `README.md` (orientation, ~10 lines), `story.md` (story + AC + non-goals) |
-| 3 | `README.md` (the full working-backwards README, ~30-60 lines) |
-| 4 | `README.md` (working-backwards) + `example-map.md` (rules + examples + questions) |
+Always write `quality-bar.md`.
 
-Always also write `quality-bar.md` with the annotated checklist.
+## Constraints per Rung
 
-## Method per rung
+**Rung 1:** One sentence, no compound conjunctions. No implementation language. Outcome confirmable by an observer.
 
-### Rung 1 — One sentence
+**Rung 2:** Each AC has a measurable outcome (state change, output, error — not "works correctly"). ≥1 explicit non-goal. Apply INVEST.
 
-Write a single declarative sentence using the grammar:
+**Rung 3:** Present tense throughout. No architecture or implementation. A reader unfamiliar with the code can predict correctness.
 
-> "When *<actor or trigger>*, the *<system component>* *<does action>* so that *<observable outcome>*."
+**Rung 4:** Every rule has ≥2 examples (one positive, one negative/boundary). Every example maps to exactly one rule. Questions pile explicitly present — empty pile suggests rung 3 sufficed.
 
-Constraints:
-- One sentence, no compound conjunctions
-- No implementation language (no file names, function names, library names)
-- The outcome is something a user or external observer could confirm
+See `references/templates.md` for exact file formats. See `references/examples.md` for a complete worked example.
 
-`README.md` content:
+## Common Gaps
 
-```markdown
-# <Task name>
+- **Describing how, not what** — implementation language sneaks in
+- **AC as feature list** — "form should be validated" is not a check
+- **Empty questions pile at rung 4** — if no ambiguities, rung 3 was enough
+- **README in future tense** — working-backwards means *as if shipped*
+- **Missing non-goals** — non-goals do as much work as goals
 
-<the single sentence>
-```
+## Quality Bar
 
-### Rung 2 — Story + acceptance criteria
-
-`story.md` content:
-
-```markdown
-# Story
-
-As a <role>, I want <capability>, so that <value>.
-
-## Acceptance criteria
-
-1. Given <state>, when <action>, then <observable outcome>.
-2. Given <state>, when <action>, then <observable outcome>.
-3. ...
-
-## Non-goals
-
-- <thing this story is NOT doing>
-- <thing this story is NOT doing>
-```
-
-Constraints:
-- Each AC has a measurable outcome (state change, output, error — not "works correctly")
-- At least one explicit non-goal
-- Apply INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable
-
-`README.md` content (~10 lines):
-
-```markdown
-# <Task name>
-
-<one-sentence summary>
-
-See `story.md` for the user story, acceptance criteria, and non-goals.
-```
-
-### Rung 3 — Working-backwards README
-
-`README.md` is the artifact. Write the README/changelog/usage doc as if the feature already shipped (Amazon working-backwards memo, scaled down).
-
-```markdown
-# <Feature name>
-
-<One-paragraph description of what the feature does, in present tense, observable terms.>
-
-## Usage
-
-<At least one complete worked example: input → output, or trigger → outcome.>
-
-## Errors
-
-<At least one error case from the user's perspective: what they did wrong, what they see.>
-
-## Not in this version
-
-<Explicit non-goals.>
-
-## FAQ
-
-<Optional but recommended. Questions a real user would ask, answered.>
-```
-
-Constraints:
-- Present tense throughout (no "will be", no "we plan to")
-- No architecture or implementation discussion — observable behavior only
-- A reader unfamiliar with the implementation can predict whether an output is correct
-
-### Rung 4 — README + example map
-
-Write the rung-3 `README.md` as above, then add `example-map.md`:
-
-```markdown
-# Example map
-
-## Rules
-
-1. <rule statement>
-2. <rule statement>
-...
-
-## Examples
-
-- [Rule 1] <input or scenario> → <expected outcome>
-- [Rule 1] <input or scenario> → <expected outcome>  (boundary or negative)
-- [Rule 2] <input or scenario> → <expected outcome>
-- ...
-
-## Open questions
-
-- <question> — <status: deferred to <date>, marked out of scope, or answered: <answer>>
-- <question> — <status>
-```
-
-Constraints:
-- Every rule has at least two examples (one positive, one negative or boundary)
-- Every example maps to exactly one rule (no orphans)
-- Questions pile is explicitly present — empty questions pile is a soft signal that the work is trivial (try rung 3) or the mapping wasn't honest (revisit)
-
-## Quality bar annotation
-
-After producing the artifact, walk the bar in `references/quality-bar.md` for the chosen rung. Write `quality-bar.md` in the output folder with each criterion marked:
-
-- `[x]` if the criterion is met
-- `[ ]` if not met (with a one-line note explaining what's missing)
-- `[~]` if met with caveats (with a note)
-
-The annotation is information, not a gate. The skill produces and writes the artifact regardless of whether all boxes check.
-
-## Common gaps the bar surfaces
-
-- **Describing how, not what.** Implementation language sneaks in. Annotate as `[ ]` and the user can revise.
-- **AC as a feature list.** "Form should be validated" is not a check. Annotate.
-- **Empty questions pile at rung 4.** If there were no ambiguities, rung 3 was probably enough.
-- **README in future tense.** Working-backwards means *as if shipped*. Annotate so the user can shift the tense.
-- **Missing non-goals.** Non-goals do as much work as goals — they tell the AI what NOT to add.
-
-## Reference files
-
-- `references/quality-bar.md` — Per-rung review checklist
-- `references/examples.md` — Worked examples of each rung produced from the same task
+After producing artifacts, walk `references/quality-bar.md` and write `quality-bar.md`. Information, not a gate.
