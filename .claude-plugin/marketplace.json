@@ -1,6 +1,10 @@
 {
   "name": "adaptative-spec",
   "description": "Adaptive specification skills for autonomous AI handoff",
+  "owner": {
+    "name": "Lucas Venturella",
+    "url": "https://github.com/lucasven"
+  },
   "plugins": [
     {
       "name": "adaptative-spec",
