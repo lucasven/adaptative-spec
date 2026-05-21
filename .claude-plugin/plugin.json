@@ -1,0 +1,11 @@
+{
+  "name": "adaptative-spec",
+  "description": "Adaptive specification skills that help shape tasks into specs for autonomous AI handoff. Covers intent, interface, behavior, and verification — each calibrated independently based on task risk.",
+  "version": "3.0.0",
+  "author": {
+    "name": "Lucas Venturella",
+    "email": "lucas.venturella@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": ["specification", "handoff", "intent", "interface", "behavior", "verification", "ATDD"]
+}
